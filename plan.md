@@ -1093,7 +1093,7 @@ PDF/DOCX 文件
 
 | 存储类型 | 技术选型                 | 部署方式                             | 数据路径/连接       |
 | -------- | ------------------------ | ------------------------------------ | ------------------- |
-| 向量存储 | Milvus 2.3+ (Standalone) | Docker Compose (etcd, minio, milvus) | 宿主机端口 `19530`  |
+| 向量存储 | Milvus 2.3+ (Standalone) | Docker Compose                    | 宿主机端口 `19530`  |
 | 文档存储 | 本地文件系统（JSON）     | 无需服务，直接读写文件               | `./data/documents/` |
 
 **目录结构示例**：
@@ -1103,6 +1103,8 @@ PDF/DOCX 文件
   documents/
     doc_001.json
     doc_002.json
+    ...
+  raws/
     ...
 ```
 

@@ -27,7 +27,7 @@ RAGent 是一个基于检索增强生成 (RAG) 技术的企业知识库问答系
 
 ## 📁 项目目录结构
 
-当前已搭建好的项目骨架结构如下（各模块文件均已生成为空白文件，等待填充实现）：
+当前已搭建好的项目骨架结构如下：
 
 ```text
 RAGent/
@@ -35,7 +35,8 @@ RAGent/
 ├── requirements.txt             # Python 后端第三方依赖包
 ├── README.md                    # 项目说明文档
 ├── data/                        # 数据存储目录
-│   └── documents/               # 存储已解析的 JSON 原文及元数据
+│   ├── documents/               # 存储已解析的 JSON 原文及元数据
+│   └── raws/                    # 存放文档原始数据
 ├── models/                      # 数据模型定义
 │   ├── __init__.py
 │   └── document.py              # Pydantic 统一文档、章节树与分块模型
@@ -88,7 +89,7 @@ RAGent/
 ## 🚀 启动与准备指南
 
 ### 1. 启动向量数据库 (Milvus)
-在项目根目录下，使用 Docker Compose 启动 Milvus 及其依赖组件（MinIO, etcd）：
+在项目根目录下，使用 Docker Compose 启动 Milvus 及其依赖组件：
 ```bash
 docker-compose up -d
 ```
@@ -118,11 +119,3 @@ npm install
 npm run dev
 ```
 
----
-
-## 🎯 Q1 核心验收场景
-
-1. **多格式文档解析**: 成功解析 PDF/DOCX 文件，生成章节树及重叠文本分块 (Chunk)。
-2. **混合检索 (Hybrid Search)**: 实现单模式 (向量/BM25) 与混合模式 (RRF 融合)，混合检索相关性结果优于单一检索。
-3. **基于引用的生成与幻觉抑制**: Agent 在生成回答时必须在句末标注引用序号（如 `[1]`），且若上下文无相关知识时，需给出兜底回应 `“当前知识库没有足够信息回答该问题”`，严禁编造答案。
-4. **流式输出 (SSE)**: 前端聊天窗口支持答案逐字/逐 token 的流式渲染，并能在加载过程中展示 Loading 态和异常状态。
