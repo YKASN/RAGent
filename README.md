@@ -84,38 +84,3 @@ RAGent/
     └── test_agent.py            # Agent 与 LLM 链路测试
 ```
 
----
-
-## 🚀 启动与准备指南
-
-### 1. 启动向量数据库 (Milvus)
-在项目根目录下，使用 Docker Compose 启动 Milvus 及其依赖组件：
-```bash
-docker-compose up -d
-```
-
-### 2. 准备 Python 虚拟环境与依赖安装
-建议使用 Python 3.9+，在根目录下执行：
-```bash
-python -m venv venv
-# Windows 激活虚拟环境
-.\venv\Scripts\activate
-
-# 安装依赖
-pip install -r requirements.txt
-```
-
-### 3. 运行后端服务
-在激活的虚拟环境下，运行 Flask API 后端：
-```bash
-python -m server.app
-```
-
-### 4. 运行前端界面
-进入 `frontend/` 文件夹下，安装依赖并启动前端开发服务器：
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
